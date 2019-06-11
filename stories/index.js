@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import { action } from "@storybook/addon-actions";
 
 
 import NewsForm from '../src/components/newsForm/';
@@ -21,10 +22,8 @@ storiesOf("Hacker App/News Form", module)
     .add("default", () => <NewsForm />);
 
 storiesOf('Hacker App/News Item', module)
-    .add('default', () => <NewsItem post= { post }  />
-    )
-    .add('No hyperlink', () => <NewsItem post= { { ...post, link: ''} }  />
-    );
+    .add("default", () => <NewsItem post={post} upvoteHandler={action("upvoted")} /> )
+    .add("No hyperlink", () => <NewsItem post={{ ...post, link: "" }} upvoteHandler={action("upvoted")}/>);
 
 storiesOf('Hacker App/News List', module)
     .add('default', () => {

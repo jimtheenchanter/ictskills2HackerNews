@@ -6,7 +6,9 @@ import './newsList.css';
 export default class NewsList extends Component {
     render() {
         const newsCards = this.props.posts.map(post => (
-        <NewsItem key={post.id} post={post} />
+        <NewsItem key={post.id}
+                  post={post}
+                  upvoteHandler={this.props.upvoteHandler}  />
     ));
 
 
