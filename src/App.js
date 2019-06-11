@@ -4,6 +4,17 @@ import './App.css';
 
 class App extends Component {
   render() {
+    const sample = {
+      author: { first: "Joe", last: "Bloggs" },
+      email: "j.bloggs@example.com",
+      phone: "012-3456789",
+      picture: { thumbnail: "./profile.png" }
+    };
+
+
+
+
+
     return (
       <div className="App">
         <header className="App-header">
