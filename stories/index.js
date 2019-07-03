@@ -22,7 +22,8 @@ storiesOf("Hacker App/News Form", module)
     .add("default", () => <NewsForm />);
 
 storiesOf('Hacker App/News Item', module)
-    .add("default", () => <NewsItem post={post} upvoteHandler={action("upvoted")} /> )
+    .add("default", () =>
+        <NewsItem post={post} upvoteHandler={action("upvoted")} /> )
     .add("No hyperlink", () => <NewsItem post={{ ...post, link: "" }} upvoteHandler={action("upvoted")}/>);
 
 storiesOf('Hacker App/News List', module)

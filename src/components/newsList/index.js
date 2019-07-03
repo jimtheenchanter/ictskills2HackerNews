@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import NewsItem from '../newsItem/';
 import './newsList.css';
 
@@ -14,7 +14,7 @@ export default class NewsList extends Component {
 
 
         return (
-        <div>{newsCards}</div>
+        <Fragment>{newsCards}</Fragment>
         );
     }
 }

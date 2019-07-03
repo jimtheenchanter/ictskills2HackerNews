@@ -40,7 +40,7 @@ export default class Form extends Component {
                 </div>
                 <button type="submit" className="btn btn-primary"
                         onClick={this.handleSubmit}>Add</button>
-             
+
             </form>
         );
     }
