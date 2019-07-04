@@ -73,4 +73,40 @@ describe("Main View ", () => {
                 .should("not.have.attr", "href");
         });
     });
+
+    describe.only("Navigate to Comment page", () => {
+        it("requires a login before showing protected page", () => {
+            cy.get("span.newsitem")
+                .eq(1)
+                .contains("Comment")
+                .click();
+            cy.url().should("include", "/login");
+            cy.get("input[name=username]")
+                .clear()
+                .type("a@b.com");
+            cy.get("input[name=password]")
+                .clear()
+                .type("test");
+            cy.get("button[type=submit]").click();
+            cy.url().should("include", "/posts/2");
+            cy.get("a").contains("Samsung's folding phone");
+        });
+        it("shows protected page when user already logged-in", () => {
+            cy.get("button")
+                .contains("Login")
+                .click();
+            cy.get("input[name=username]")
+                .clear()
+                .type("a@b.com");
+            cy.get("input[name=password]")
+                .clear()
+                .type("test");
+            cy.get("button[type=submit]").click();
+            cy.get("span.newsitem")
+                .eq(1)
+                .contains("Comment")
+                .click();
+            cy.url().should("include", "/posts/2");
+        });
+    });
 });
