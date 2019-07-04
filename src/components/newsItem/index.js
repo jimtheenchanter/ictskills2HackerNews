@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import './newsItem.css';
 import "../../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,7 +21,7 @@ export default class NewsItem extends Component {
                 <span className="newsitem">
                     {line}
                     <span>
-                        <a href="/">Comments</a>
+                        <Link to={`/posts/${this.props.post.id}` }>Comments</Link>
                     </span>
                 </span>
                 <p className="author">{this.props.post.author}</p>
