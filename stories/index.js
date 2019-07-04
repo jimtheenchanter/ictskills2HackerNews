@@ -9,6 +9,9 @@ import CommentList from "../src/components/commentList";
 import NewsForm from '../src/components/newsForm/';
 import NewsItem from '../src/components/newsItem';
 import NewsList from '../src/components/newsList';
+import Header from "../src/components/header/";
+import { MemoryRouter } from "react-router";
+import LoginForm from "../src/components/authentication/loginForm";
 
 const post = {
     id: 1 ,
@@ -24,11 +27,17 @@ storiesOf("Hacker App/News Form", module)
     .add("default", () => <NewsForm />);
 
 storiesOf('Hacker App/News Item', module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
     .add("default", () =>
         <NewsItem post={post} upvoteHandler={action("upvoted")} /> )
     .add("No hyperlink", () => <NewsItem post={{ ...post, link: "" }} upvoteHandler={action("upvoted")}/>);
 
 storiesOf('Hacker App/News List', module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
     .add('default', () => {
         const defaultPosts = [
             { ...post, id: 1, title: 'Post 1', upvotes: 10 },
@@ -64,4 +73,20 @@ storiesOf("Hacker App/Comment page/Comment list", module).add("default", () => {
     return (
         <CommentList upvoteHandler={action("upvoted")} comments={defaultComments} />
     );
+
+
 });
+
+storiesOf("Hacker App/Header", module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
+    .add("default", () => <Header />);
+
+storiesOf("Hacker App/Login Form", module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
+    .add("default", () => (
+        <LoginForm />
+    ));
